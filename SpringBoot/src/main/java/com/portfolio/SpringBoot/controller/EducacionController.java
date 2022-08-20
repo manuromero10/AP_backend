@@ -4,6 +4,7 @@ import com.portfolio.SpringBoot.model.Educacion;
 import com.portfolio.SpringBoot.service.IEducacionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,17 +33,20 @@ public class EducacionController {
         return eduServ.buscarEducacionById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/educacion/new")
     public void agregarEducacion (@RequestBody Educacion educacion) {
         eduServ.crearEducacion(educacion);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/educacion/edit")
     public void editEducacion(@RequestBody Educacion educacion) {
         eduServ.editEducacion(educacion);
    
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/educacion/delete/{id}")
     public void borrarEducacionById (@PathVariable Long id) {
         eduServ.borrarEducacionById(id);

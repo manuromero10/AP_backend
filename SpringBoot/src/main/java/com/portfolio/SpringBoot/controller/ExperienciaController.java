@@ -4,6 +4,7 @@ import com.portfolio.SpringBoot.model.Experiencia;
 import com.portfolio.SpringBoot.service.IExperienciaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,17 +33,20 @@ public class ExperienciaController {
         return expServ.buscarExperienciaById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/experiencia/new")
     public void agregarEducacion (@RequestBody Experiencia experiencia) {
         expServ.crearExperiencia(experiencia);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencia/edit")
     public void editExperiencia(@RequestBody Experiencia experiencia) {
         expServ.editExperiencia(experiencia);
    
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/experiencia/delete/{id}")
     public void borrarExperienciaById (@PathVariable Long id) {
         expServ.borrarExperienciaById(id);
