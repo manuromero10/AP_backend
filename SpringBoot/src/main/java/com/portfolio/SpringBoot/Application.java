@@ -19,7 +19,10 @@ public class Application {
 		return new WebMvcConfigurer() {
                         @Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:4200","*").allowedMethods("*")
+				registry.addMapping("/**")
+                                        .allowedOrigins("https://portfolio-ap-ms.firebaseapp.com","https://portfolio-ap-ms.web.app")
+                                        // .allowedOrigins("http://localhost:4200")
+                                        .allowedMethods("*")
                         .allowedHeaders("*");
 			}
 		};
