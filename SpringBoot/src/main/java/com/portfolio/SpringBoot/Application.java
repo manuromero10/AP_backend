@@ -20,7 +20,7 @@ public class Application {
                         @Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-                                        .allowedOrigins("https://portfolio-ap-ms.firebaseapp.com","https://portfolio-ap-ms.web.app")
+                                        .allowedOrigins("https://portfolio-ap-ms.firebaseapp.com","https://portfolio-ap-ms.web.app","http://localhost:4200")
                                         // .allowedOrigins("http://localhost:4200")
                                         .allowedMethods("*")
                         .allowedHeaders("*");
